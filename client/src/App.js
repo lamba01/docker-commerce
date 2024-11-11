@@ -1,7 +1,7 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import client from './ApolloClient';
-import Fetch from './fetch';
+import ProductList from './components/productList';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <div className="App">
         <h1>React + GraphQL Project</h1>
         <h2>learn react</h2>
-        <Fetch />
+        <ProductList />
       </div>
     </ApolloProvider>
   );
