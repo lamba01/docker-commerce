@@ -1,0 +1,38 @@
+name: Backend CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.20.4'
+
+      # Install backend dependencies
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: ./server
+
+      # Run backend tests
+      - name: Run backend tests
+        run: npm test
+        working-directory: ./server
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      # Start the backend server (if needed)
+      - name: Start Backend Server
+        run: node server.js
+        working-directory: ./server
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
