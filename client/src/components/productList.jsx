@@ -1,6 +1,7 @@
 // src/components/ProductList.js
 import React from 'react';
 import useFetchProducts from '../hooks/useFetchProducts';
+import Topnav from './Topnav';
 
 const ProductList = () => {
   const { products, error } = useFetchProducts();
@@ -11,6 +12,7 @@ const ProductList = () => {
 
   return (
     <div>
+      <Topnav />
       <h3>Product List</h3>
       <ul>
         {products.map((product) => (
